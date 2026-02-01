@@ -198,7 +198,7 @@ int get_char_raw() {
     #endif
 }
 
-// truncate path from the left if it's too long for the UI
+
 void shorten_path(const char *in, char *out, int max_len) {
     int len = strlen(in);
     if (len < max_len) {
@@ -222,7 +222,6 @@ void render_ui(const char *query, FileEntry **matches, int count, double searchT
             char shortPath[60];
             shorten_path(matches[i]->fullpath, shortPath, 55);
 
-            // The Apple Aesthetic:
             // [ID] Filename (Bold) ... Path (Dimmed)
             printf("  " COLOR_CYAN "[%2d]" COLOR_RESET "  " COLOR_BOLD "%-35s" COLOR_RESET "  " COLOR_DIM "%s" COLOR_RESET, 
                    i + 1, 
@@ -378,7 +377,7 @@ int main(int argc, char *argv[]) {
     app_loop();
     clearIndex();
     
-    // Clear screen on exit for politeness
+    // Clear screen on exit 
     #ifdef OS_WINDOWS
         system("cls");
     #else
@@ -386,3 +385,4 @@ int main(int argc, char *argv[]) {
     #endif
     return 0;
 }
+
